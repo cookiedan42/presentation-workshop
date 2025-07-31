@@ -5,7 +5,7 @@ theme: seriph
 # like them? see https://unsplash.com/collections/94734566/slidev
 background: https://cover.sli.dev
 # some information about your slides (markdown enabled)
-title: Cover Slide
+title: Presentation course
 info: Presentation for the course
 # apply unocss classes to the current slide
 class: text-center
