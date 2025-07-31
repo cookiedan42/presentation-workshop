@@ -254,5 +254,5 @@ layout: quote
 ```
 ````
 <div v-click>
-<img src="./images/eplanner.png" style="width: 55%"/>
+<img src="/images/eplanner.png" style="width: 55%"/>
 </div>
