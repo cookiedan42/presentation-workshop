@@ -43,7 +43,7 @@ image: /images/footprint.png
 # Context  
 
 - How can we communicate with others about this piece of land?  
-- We need our users to be able to use the data 
+- We need all our users to be able to use the data 
   - Urban Planners  
   - Architects  
   - Software Engineers
@@ -64,8 +64,9 @@ image: /images/footprint.png
 
 
 ```json
+// <well known text>
 {
-  "site": <well known text>,
+  "site": "POLYGON(...)",
   "gpr": 3.0,
 }
 
@@ -73,8 +74,9 @@ image: /images/footprint.png
 ```
 
 ```json
+// <well known binary>
 {
-  "site": <well known binary>,
+  "site": 0xFFFFFF...,
   "gpr": 3.0,
 }
 
@@ -83,8 +85,19 @@ image: /images/footprint.png
 ```
 
 ```json
+// GeoJSON
 {
-  "site": <geojson>,
+  "site": {
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "type": "Feature",
+        "geometry": {
+          "coordinates": [...],
+        },
+      }
+    ]
+  },
   "gpr": 3.0,
 }
 
@@ -92,13 +105,35 @@ image: /images/footprint.png
 ```
 
 ```json
+// ESRI JSON
 {
-  "site": <esri json>,
+  "site": {
+    "geometry": {
+      "rings": [
+        [
+          ...
+        ]
+      ],
+      "spatialReference": {
+        "wkid": 4326
+      }
+    }
+  },
   "gpr": 3.0,
 }
 
-// ESRI's version of geojson for serializing their data formats
+// ESRI's flavour of geojson for serializing their data formats
 // directly supported by ESRI's products
+```
+
+```json
+// <well known text>
+{
+  "site": "POLYGON(...)",
+  "gpr": 3.0,
+}
+
+// For simplicity, let's use WKT
 ```
 ````
 ---
@@ -120,13 +155,13 @@ image: /images/footprint.png
 ````md magic-move {lines: true}
 ```json
 {
-  "site": <geometry>,
+  "site": "POLYGON(...)",
   "gfa": 3.0,
 }
 ```
 ```json
 {
-  "site": <geometry>,
+  "site": "POLYGON(...)",
   "gfa": 3.0,
 }
 // what aspect of the site is being described?
@@ -134,7 +169,7 @@ image: /images/footprint.png
 ```
 ```json
 {
-  "site_boundary": <geometry>,
+  "site_boundary": "POLYGON(...)",
   "target_gross_plot_ratio": 3.0,
   // I can now research "gross plot ratio" for more information
 }
@@ -144,31 +179,9 @@ image: /images/footprint.png
 ---
 layout: two-cols-header
 ---
-# Coordinate system(s)
+# Coordinate systems
 
 ::left::
-
-
-## Cartographic
-<div v-click>
-
-- X, Y, Z -> east, north, elevation
-</div>
-<div v-click>
-
-- Plane 
-  - 🌏 WGS84 (projected on ellipsoid)
-  - 🗺️ SVY21 (projected on flat ground)
-
-</div>
-<div v-click>
-
-![](/images/coord_left.jpg)
-
-</div>
-
-::right::
-
 
 ## 3d Graphics
 <div v-click>
@@ -189,6 +202,27 @@ layout: two-cols-header
 
 </div>
 
+::right::
+
+## Cartographic
+<div v-click>
+
+- X, Y, Z -> east, north, elevation
+</div>
+<div v-click>
+
+- Plane 
+  - 🌏 WGS84 (projected on ellipsoid)
+  - 🗺️ SVY21 (projected on flat ground)
+
+</div>
+<div v-click>
+
+![](/images/coord_left.jpg)
+
+</div>
+
+
 ---
 layout: quote
 
@@ -205,18 +239,20 @@ layout: quote
 ```
 ```json
 {
-  "site_boundary": <wkt>,
+  "site_boundary": "POLYGON(...)",
   "coordinate_system": "EPSG:3414", // EPSG:3414 is the code for svy21
   "target_gross_plot_ratio": 3.0,
 }
 ```
 ```json
 // and this is just for a small example
-
 {
-  "site_boundary": <wkt>,
+  "site_boundary": "POLYGON(...)",
   "coordinate_system": "EPSG:3414", // EPSG:3414 is the code for svy21
   "target_gross_plot_ratio": 3.0,
 }
 ```
 ````
+<div v-click>
+<img src="./images/eplanner.png" style="width: 55%"/>
+</div>

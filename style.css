@@ -1,3 +1,10 @@
 .slidev-layout.two-cols-header {
     grid-template-rows: auto 1fr auto !important;
 }
+.img-container {
+    position: relative;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
