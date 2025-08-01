@@ -26,7 +26,7 @@ seoMeta:
 hideInToc: true
 ---
 
-# Why standards?
+# Talking accross Disciplines
 
 ---
 hideInToc: true
