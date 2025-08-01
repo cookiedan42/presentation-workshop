@@ -26,7 +26,7 @@ seoMeta:
 hideInToc: true
 ---
 
-# Talking accross Disciplines
+# Cross Discipline Communication
 
 ---
 hideInToc: true
